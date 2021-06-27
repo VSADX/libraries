@@ -87,12 +87,15 @@
                     text-align: center;
                     margin: .5em 0;
 
-                    transition: .2s background;
                 }
-                \& li:hover {
+                \& li, \& h2 {
+                    transition: .2s background;
+                    cursor: pointer;
+                }
+                \& li:hover, \& h2:hover {
                     background: #fffb;
                 }
-                \& li:active {
+                \& li:active, \& h2:active {
                     background: #fff;
                 }
             </style>
@@ -226,13 +229,11 @@
 
             </html-template>
         </section>
-        <div>
-        </div>
 
         <style class="scoped">
             \& {
                 display: grid;
-                grid-template-columns: 1.25fr 3fr .75fr;
+                grid-template-columns: 1.25fr 3.75fr;
             }
             \& > aside {
                 background: hsl(240, 18%, 62%);
@@ -248,9 +249,15 @@
                 margin: 1em;
                 font-size: 4em;
             }
+
+            @media screen AND (min-width: 986px) {
+                \& > section > article {
+                    max-width: 50vw;
+                }
+            }
             @media screen AND (max-width: 986px) {
                 \& {
-                    grid-template-columns: 1.25fr 3fr 0;
+                    grid-template-columns: 1.25fr 3fr;
                 }
             }
             @media screen AND (max-width: 756px) {
