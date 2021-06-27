@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSADX / libraries</title>
+    <script src="https://cdn.jsdelivr.net/gh/VSADX/scoped-css@main/scoped-css.js" type="module"></script>
+    <script src="./lib-slot-cache-imports.js" type="module"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        * {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <aside>
+            <div class="spacer"></div>
+            <h2 evx onclick="filter()">
+                @ Filters
+            </h2>
+            <h3>
+                CSS
+            </h3>
+            <div>
+                <ul>
+                    <li evx onclick="filter('scoped-css')">Scoped CSS</li>
+                    <li evx onclick="filter('css-animate-events')">CSS Animate Events</li>
+                </ul>
+            </div>
+            <h3>
+                HTML
+            </h3>
+            <div>
+                <ul>
+                    <li evx onclick="filter('html-imports')">HTML Imports</li>
+                    <li evx onclick="filter('html-scoped-js')">HTML Scoped JS</li>
+                </ul>
+            </div>
+
+            <script type="module" scoped>
+                import { scope } from "https://cdn.jsdelivr.net/gh/VSADX/html-scoped-js@main/html-scoped-js.js"
+                
+                scope(() => ({filter}))
+
+                function filter(handle = "showall") {
+                    const articles = [...document.querySelectorAll("section > article")]
+                    
+                    articles.forEach(element => 
+                        handle === "showall" ? element.style.display = "inherit" :
+                            `@${handle}` === element.querySelector("div[as] > p > a").textContent.trim() ?
+                                element.style.display = "inherit" :
+                                element.style.display = "none")
+                }
+            </script>
+
+            <style class="scoped">
+                \& .spacer {
+                    height: 8em;
+                }
+                \& h2 {
+                    font-size: 2em;
+                    padding: .25em;
+                    background: #fff8;
+                    border-radius: .75em;
+                    text-align: center;
+                    margin: 1em 0;
+                }
+                \& h3 {
+                    font-size: 2.5em;
+                }
+            </style>
+            <style class="scoped">
+                \& ul {
+                    padding: 0;
+                }
+                \& li {
+                    list-style: none;
+                    font-size: 1.32em;
+                    background: #fff4;
+                    border-radius: .64em;
+                    padding: .5em 0;
+                    text-align: center;
+                    margin: .5em 0;
+
+                    transition: .2s background;
+                }
+                \& li:hover {
+                    background: #fffb;
+                }
+                \& li:active {
+                    background: #fff;
+                }
+            </style>
+        </aside>
+        <section>
+            <link rel="preload" href="./article-card.html" as="font">
+
+            <h1>
+                Let's code!
+            </h1>
+
+            <html-template href="./article-card.html">
+
+                <div as="header">
+                    <p><b>Scoped CSS</b></p>
+                    <p><a href="https://github.com/VSADX/scoped-css">@scoped-css</a></p>·
+                    <p>Lvl 2</p>
+                </div>
+
+                <p as="text">
+                    The "direct child selector" looks like <code>&gt;</code> 
+                    it only selects one level deep. <br>
+                    CSS lets you dial in what you want to affect.
+                </p>
+
+                <img as="image" src="./scoped-dir-child.png" alt="" srcset="">
+                <a as="link" href="https://github.com/VSADX/scoped-css/wiki">Visit ✅</a>
+            </html-template>
+
+            <html-template href="./article-card.html">
+                
+                <div as="header">
+                    <p><b>Scoped CSS</b></p>
+                    <p><a href="https://github.com/VSADX/scoped-css">@scoped-css</a></p>·
+                    <p>Lvl 1</p>
+                </div>
+
+                <p as="text">
+                    Add <code>&lt;style class="scoped"></code> 
+                    to auto generate unique classes for your CSS. <br>
+                    You always know where the CSS for a component is.
+                </p>
+
+                <img as="image" src="./scoped-how-to.png" alt="" srcset="">
+                <a as="link" href="https://github.com/VSADX/scoped-css/wiki/%F0%9F%8F%96-Spend-less-time-looking-for-CSS">Learn how!</a>
+
+            </html-template>
+
+            <html-template href="./article-card.html">
+
+                <div as="header">
+                    <p><b>HTML Imports</b></p>
+                    <p><a href="https://github.com/VSADX/html-imports">@html-imports</a></p>·
+                    <p>Lvl 1</p>
+                </div>
+
+                <p as="text">
+                    Wish you could reuse HTML between pages? <br>
+                    Usually that means servers or frameworks - this is HTML imports.
+                </p>
+
+                <img as="image" src="./htmli-how-to.png" alt="" srcset="">
+                <a as="link" href="https://github.com/VSADX/html-imports#the-basics">Start using 🎈</a>
+
+            </html-template>
+
+            <html-template href="./article-card.html">
+
+                <div as="header">
+                    <p><b>HTML Scoped JS</b></p>
+                    <p><a href="https://github.com/VSADX/html-scoped-js">@html-scoped-js</a></p>·
+                    <p>Lvl 1</p>
+                </div>
+
+                <p as="text">
+                    Both document.getElementById or using element ids is no fun. No elements 
+                    can have the same id - even if they a <code>&lt;div></code> or more apart - 
+                    even if you know exactly which element you want. HTML Scoped JS will only search 
+                    for <code>idx</code> under its parent element. 
+                </p>
+
+                <img as="image" src="./scopejs-lvl-1.png" alt="" srcset="">
+                <a as="link" href="https://github.com/VSADX/html-scoped-js">
+                    <!-- todo: wiki -->
+                    Reusable element ids? Yes please
+                </a>
+
+            </html-template>
+
+            <html-template href="./article-card.html">
+
+                <div as="header">
+                    <p><b>CSS Animate Events</b></p>
+                    <p><a href="https://github.com/VSADX/css-animate-events">@css-animate-events</a></p>·
+                    <p>Lvl 1</p>
+                </div>
+
+                <p as="text">
+                    CSS animations! If only we could animate JavaScript events like
+                    <code>click</code>, <code>keypress</code>, or <code>mouseenter</code>. 
+                    CSS can't watch for these events, 
+                    but if we could, what might it look like?
+                </p>
+
+                <img as="image" src="./cssani-how-to.png" alt="" srcset="">
+                <a as="link" href="https://github.com/VSADX/css-animate-events#simple-animate-element-api">
+                    <!-- todo: wiki -->
+                    I want this 🌋
+                </a>
+
+            </html-template>
+
+            <html-template href="./article-card.html">
+
+                <div as="header">
+                    <p><b>CSS Animate Events</b></p>
+                    <p><a href="https://github.com/VSADX/css-animate-events">@css-animate-events</a></p>·
+                    <p>Lvl 2</p>
+                </div>
+
+                <p as="text">
+                    Hear me out, I want to animate the <code>click</code> event of a button, 
+                    but I don't want to animate the button. Can I do that?
+                </p>
+
+                <img as="image" src="./cssani-lvl-2.png" alt="" srcset="">
+                <a as="link" href="https://github.com/VSADX/css-animate-events#eventable-animate-passes-api">
+                    <!-- todo: wiki -->
+                    Yes, you can do that
+                </a>
+
+            </html-template>
+        </section>
+        <div>
+        </div>
+
+        <style class="scoped">
+            \& {
+                display: grid;
+                grid-template-columns: 1.25fr 3fr .75fr;
+            }
+            \& > aside {
+                background: hsl(240, 18%, 62%);
+                background: hsl(240deg 23% 56%);
+                height: 100vh;
+                padding: 0 1em;
+            }
+            \& > section {
+                overflow-y: auto;
+                height: 100vh;
+            }
+            \& h1 {
+                margin: 1em;
+                font-size: 4em;
+            }
+            @media screen AND (max-width: 986px) {
+                \& {
+                    grid-template-columns: 1.25fr 3fr 0;
+                }
+            }
+            @media screen AND (max-width: 756px) {
+                \& {
+                    grid-template-columns: 1fr;
+                }
+                \& > section {
+                    order: -1;
+                }
+            }
+        </style>
+    </main>
+
+    <footer>
+        <p>
+            <a href="https://github.com/VSADX/">@VSADX on github.com</a>
+        </p>
+        <span></span>
+        <p>
+            2021
+        </p>
+        <style class="scoped">
+            \& {
+                background: #0001;
+                padding: 1em;
+                display: flex;
+            }
+            \& span {
+                flex: 1;
+            }
+        </style>
+    </footer>
+</body>
+</html>

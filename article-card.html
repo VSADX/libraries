@@ -1,0 +1,75 @@
+<article>
+    <header>
+        <slot name="header"></slot>
+
+        <style class="scoped">
+            \& > div {
+                color: #555;
+                display: flex;
+                font-size: 1.5em;
+                gap: .32em; /*todo:fallback*/
+                margin-bottom: 1em;
+            }
+            \& b {
+                color: #333;
+            }
+        </style>
+    </header>
+    <slot name="text"></slot>
+    <div>
+        <slot name="image"></slot>
+        <slot name="link"></slot>
+    </div>
+
+    <style class="scoped">
+        \& {
+            margin: 2em;
+            border-radius: 2em;
+            padding: 2em;
+            background: #f8f8f8;
+        }
+        \& > p {
+            font-size: 1.125em;
+            padding-bottom: 1em;
+            max-width: 600px;
+        }
+        \& > p > code {
+            background: white;
+            padding: .125em .32em;
+            border-radius: .125em;
+            color: rgb(192, 124, 45);
+        }
+        \& > div {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            border-radius: 1.5em;
+            background: repeating-linear-gradient(45deg, hsl(240, 18%, 62%) 0, hsl(240, 18%, 62%) 4em, hsl(240, 16%, 72%) 4em, hsl(240, 16%, 72%) 8em);
+        }
+        \& > div > img {
+            height: 100%;
+            margin: auto;
+            
+            filter: drop-shadow(0 1em 4em #0006);
+            
+            max-width: 100%;
+            object-fit: contain;
+        }
+        \& > div > a {
+            font-size: 1.25em;
+            position: absolute;
+            right: 1em;
+            bottom: 1em;
+            padding: .75em 2em;
+            display: block;
+            background: white;
+            border-radius: 6em;
+            text-decoration: none;
+            
+            transition: .2s background;
+        }
+        \& > div > a:hover {
+            background: #ddd;
+        }
+    </style>
+</article>
