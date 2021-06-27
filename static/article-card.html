@@ -22,11 +22,18 @@
     </div>
 
     <style class="scoped">
+        @keyframes pop-in {
+            from {
+                transform: scale(.9) translateX(-100%);
+            }
+        }
         \& {
             margin: 2em;
             border-radius: 2em;
             padding: 2em;
             background: #f8f8f8;
+
+            animation: pop-in .25s ease-out;
         }
         \& > p {
             font-size: 1.125em;
