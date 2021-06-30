@@ -16,7 +16,8 @@ Site available!
 2. Adding `goto` to JavaScript
 3. Creating `falsy` objects in JavaScript
 4. Options for `with` statement in ES modules
-5. Internal binary for `Number` in JavaScript
+5. Removing need to type `this` in class methods
+6. Internal binary for `Number` in JavaScript
   
 ## Browser Support  
 - IE 10/11 conditional comments
