@@ -48,3 +48,10 @@ Site available!
 5. Proxy Prototype
 6. CSS Expressions
 7. XBind
+8. Equity JS
+9. Apply Prototype
+  
+## Soon
+1. Lasy Inherits w Types
+2. Import normal JS as a module
+3. Overloads for JS
